@@ -4,14 +4,23 @@ import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class SplashActivity extends Activity {
+import com.fatcat.mobliesafe.util.PackageUtil;
 
+public class SplashActivity extends Activity {
+    private TextView mVersion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);  //代码方式去除标题
         setContentView(R.layout.activity_splash);
+        initView();
+    }
+
+    private void initView() {
+        mVersion = (TextView)findViewById(R.id.splash_tv_version);
+        mVersion.setText("版本:"+ PackageUtil.getVersionName(this));
     }
 }
